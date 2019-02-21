@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Property.Entity.IdxCommercial>
+@{
+    ViewBag.Title = "GetAllResidential";
+    //Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+<section class="offset-top-40">
+    <div class="shell">
+        <div class="range range-xs-center range-sm-left offset-top-20">
+            <div class="cell-sm-12 text-sm-left ">
+                <h6 class="text-bold">Property List</h6>
+                <hr class="divider bg-madison hr-sm-left-0">
+                <div class="offset-top-10 offset-sm-top-20">
+                    <p>This is a full list of Property </p>
+
+                    <p><b>Total Count:  @Model.Count()</b></p>
+                </div>
+
+                <!-- Class Room Courses-->
+                <table data-responsive="true" class="table table-custom table-fixed bordered-table">
+
+                    <tr>
+                        <th>Property Photo</th>
+                        <th>URL</th>
+                        <th class="">Mls	</th>
+                        <th>Price	</th>
+                        <th>Brokerage</th>
+                        <th>BedRooms</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><img src="@String.Concat("http://webservices.only4agents.com/IDXImagesCommercial/Photo", item.MLS+"-.jpg") " alt="" height="200px" width="160px" /></td>
+                            <td>@item.pImage</td>
+                            <td>@item.MLS</td>
+                            <td>@item.ListPrice</td>
+                            <td>@item.ListBrokerage</td>
+                            <td>@item.Bedrooms</td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+

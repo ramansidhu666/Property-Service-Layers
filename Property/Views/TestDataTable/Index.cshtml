@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Index</h2>
+<link href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="~/Table/jquery-1.7.2.min.js"></script>
+<script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+
+<table id="SearchResultTable" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Mls</th>
+            <th>Community</th>
+            <th>Area</th>
+            @*<th>Address</th>*@
+
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th>Mls</th>
+            <th>Community</th>
+            <th>Area</th>
+            @*<th>Address</th>*@
+
+        </tr>
+    </tfoot>
+
+    <tbody>
+        <tr>
+            <td>MLs</td>
+            <td>Community</td>
+            <td>Area</td>
+            @*<td>Address</td>*@
+
+        </tr>
+
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        
+
+            $("#SearchResultTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": false, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+                    "url": "/testdatatable/LoadData",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                        { "data": "MLS", "name": "MLS", "autoWidth": true },
+                        { "data": "Community", "name": "Community", "autoWidth": true },
+                        { "data": "Area", "name": "Area", "autoWidth": true }                        
+                ]
+            });
+        });
+    </script>
